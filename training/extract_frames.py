@@ -1,28 +1,8 @@
-"""
-FF++ Frame Extraction Script with Face Cropping
-================================================
-Extracts frames from FaceForensics++ videos, detects and crops faces,
-and saves them organized for binary classification training.
-
-Output structure:
-    frames/
-        fake/   <- frames from Deepfakes videos
-        real/   <- frames from original videos
-
-Requirements:
-    pip install opencv-python tqdm
-
-Usage:
-    Step 1: Edit the CONFIG section below (paths)
-    Step 2: Run: python extract_frames.py
-"""
-
 import cv2
 import os
 import numpy as np
 from tqdm import tqdm
-import gc  # garbage collector - important for 4GB RAM
-
+import gc  
 # ─────────────────────────────────────────────
 # CONFIG — Edit these paths before running
 # ─────────────────────────────────────────────
@@ -107,7 +87,7 @@ def extract_frames(video_path, output_folder, video_name):
         cap.release()
         return 0
 
-    # Pick evenly spaced frame indices (same logic as your Celeb-DF pipeline)
+    # Pick evenly spaced frame indices 
     frame_indices = np.linspace(0, total_frames - 1, FRAMES_PER_VIDEO, dtype=int)
 
     saved = 0
@@ -129,7 +109,7 @@ def extract_frames(video_path, output_folder, video_name):
         cv2.imwrite(out_path, face, [cv2.IMWRITE_JPEG_QUALITY, JPEG_QUALITY])
         saved += 1
 
-        # Free frame memory immediately — critical for 4GB RAM
+        # Free frame memory immediately 
         del frame, face
 
     cap.release()
