@@ -29,15 +29,15 @@ Evaluated on a held-out test set of **5,956 frames** never seen during training.
 
 **Batch Analysis**
 
-![Batch](assets/batch.png)
+![Batch](assets/batch_processing.png)
 
 **Live Frame-by-Frame Analysis with Grad-CAM**
 
-![Live](assets/live.png)
+![Live](assets/frame_analysis.png)
 
 **Model Info**
 
-![Model](assets/model-info.png)
+![Model](assets/model_info.png)
 
 ---
 
